@@ -34,3 +34,30 @@ server:
 cd build/libs
 java -jar .\user-service-0.0.1-SNAPSHOT.jar --server.port=9004
 ```
+
+---
+
+## [Service Discovery] User Service - Load Balancer
+
+### `application.yml`에서 랜덤 포트 설정
+
+```yml
+server:
+  port: 0
+```
+
+### 설정 후 다음 명령어로 서로 다른 포트를 가진 서비스 실행 가능
+
+```bash
+./gradlew bootRun --args='--server.port=9003'
+```
+
+* 하지만 Eureka에는 인스턴스가 하나만 표시됨
+
+### `application.yml` 설정으로 서로 다른 이름의 인스턴스가 나오도록 함
+
+```yml
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.valume}}
+```
