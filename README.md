@@ -61,3 +61,31 @@ eureka:
   instance:
     instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.valume}}
 ```
+
+---
+
+## [API Gateway Service] Spring Cloud Gateway - 프로젝트 생성
+
+### Controller의 작성 시 주의 사항
+
+#### 순수 서비스를 띄울 시
+
+```java
+@RequestMapping("/")
+public class FirstServiceController {
+    ...
+}
+```
+
+* url: `http://localhost:8081/welcome`
+
+#### API Gateway 통해서 들어올 시
+
+```java
+@RequestMapping("/first-service")
+public class FirstServiceController {
+    ...
+}
+```
+
+* url: `http://localhost:8000/first-service/welcome`
