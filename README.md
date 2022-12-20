@@ -22,15 +22,13 @@ server:
 ### 3. gradle bootRun
 
 ```bash
-./gradlew clean bootRun
-./gradlew bootRun --args='--server.port=9003'
+./gradlew clean bootRun --args='--server.port=9003'
 ```
 
 ### 4. gradle build 후 java -jar
 
 ```bash
-./gradlew clean bootRun
-./gradlew build
+./gradlew clean build
 cd build/libs
 java -jar .\user-service-0.0.1-SNAPSHOT.jar --server.port=9004
 ```
