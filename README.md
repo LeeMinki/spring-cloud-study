@@ -138,6 +138,8 @@ public class FirstServiceController {
 
 * discoveryservice(Eureka)는 Intellij가 아닌 `./gradlew clean bootRun`으로 실행\
 
+---
+
 ## [Users Microservice 1] - H2 데이터베이스 연동
 
 ### build.gradle
@@ -161,3 +163,11 @@ dependencies {
 <img width="429" alt="image" src="https://user-images.githubusercontent.com/28076542/208739966-707ea093-22e6-4372-87e2-5556f997d415.png">
 
 <img width="342" alt="image" src="https://user-images.githubusercontent.com/28076542/208740022-e37864b0-e9e4-470f-95b0-304682c4f76f.png">
+
+---
+
+## [Users Microservice 1] - 사용자 추가
+
+<img width="509" alt="image" src="https://user-images.githubusercontent.com/28076542/208741086-ada00bba-b7f7-4786-8f33-fca1dca3e718.png">
+
+* dto 하나로 해도 상관 없음
