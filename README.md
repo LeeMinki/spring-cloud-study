@@ -136,4 +136,28 @@ public class FirstServiceController {
 
 ## [Users Microservice 1] - welcome() 메소드
 
-* discoveryservice(Eureka)는 Intellij가 아닌 `./gradlew clean bootRun`으로 실행
+* discoveryservice(Eureka)는 Intellij가 아닌 `./gradlew clean bootRun`으로 실행\
+
+## [Users Microservice 1] - H2 데이터베이스 연동
+
+### build.gradle
+
+```gradle
+dependencies {
+  ...
+	testImplementation group: 'com.h2database', name: 'h2', version: '2.1.214'
+	implementation group: 'com.h2database', name: 'h2', version: '2.1.214'
+}
+```
+
+### H2 Windows Installer 설치
+
+* http://www.h2database.com/html/download.html
+
+### 데이터베이스 생성
+
+<img width="118" alt="image" src="https://user-images.githubusercontent.com/28076542/208739707-9989d988-19fe-46ab-8f10-4f6c2799c617.png">
+
+<img width="429" alt="image" src="https://user-images.githubusercontent.com/28076542/208739966-707ea093-22e6-4372-87e2-5556f997d415.png">
+
+<img width="342" alt="image" src="https://user-images.githubusercontent.com/28076542/208740022-e37864b0-e9e4-470f-95b0-304682c4f76f.png">
