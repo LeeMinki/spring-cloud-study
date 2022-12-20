@@ -131,3 +131,9 @@ public class FirstServiceController {
 ### 애플리케이션 APIs
 
 <img width="841" alt="image" src="https://user-images.githubusercontent.com/28076542/208725701-4f613148-d70e-44fc-8e98-800299ccdba8.png">
+
+---
+
+## [Users Microservice 1] - welcome() 메소드
+
+* discoveryservice(Eureka)는 Intellij가 아닌 `./gradlew clean bootRun`으로 실행
