@@ -112,3 +112,22 @@ public class FirstServiceController {
 
 <img width="1177" alt="image" src="https://user-images.githubusercontent.com/28076542/208722585-4d302a15-5e33-42b8-9adf-3664b74e2287.png">
 
+---
+
+## [E-commerce 애플리케이션] - E-commerce 애플리케이션 구성
+
+### 강의 애플리케이션 구성
+
+<img width="886" alt="image" src="https://user-images.githubusercontent.com/28076542/208725159-b145e144-ceb4-4d4c-9d7a-98b26e9b1a19.png">
+
+### 심화된 애플리케이션 구성
+
+<img width="857" alt="image" src="https://user-images.githubusercontent.com/28076542/208725328-b1924c2e-4012-4803-be7a-4b00593150d1.png">
+
+### 애플리케이션 구성요소
+
+<img width="811" alt="image" src="https://user-images.githubusercontent.com/28076542/208725569-515db711-adc4-4310-af36-29bf1dc9df49.png">
+
+### 애플리케이션 APIs
+
+<img width="841" alt="image" src="https://user-images.githubusercontent.com/28076542/208725701-4f613148-d70e-44fc-8e98-800299ccdba8.png">
