@@ -101,3 +101,10 @@ public class FirstServiceController {
 <img width="1201" alt="image" src="https://user-images.githubusercontent.com/28076542/208709812-881e46dc-cbb8-406e-b03b-0fdcc54f2123.png">
 
 * Order가 `Ordered.HIGHEST_PRECEDENCE`인 경우엔 Logging Filter가 가장 먼저, 가장 나중에 호출됨
+
+---
+
+## [API Gateway Service] Spring Cloud Gateway - Load Balancer 1
+
+<img width="860" alt="image" src="https://user-images.githubusercontent.com/28076542/208713924-773b82f5-e623-4069-949e-a4a3a9439254.png">
+
