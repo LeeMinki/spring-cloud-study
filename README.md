@@ -171,3 +171,35 @@ dependencies {
 <img width="509" alt="image" src="https://user-images.githubusercontent.com/28076542/208741086-ada00bba-b7f7-4786-8f33-fca1dca3e718.png">
 
 * dto 하나로 해도 상관 없음
+
+---
+
+## [Users Microservice 1] - JPA1
+
+### spring boot 2.3 버전 이상부턴 validator 추가해야 함
+
+```gradle
+dependencies {
+  ...
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+}
+```
+
+---
+
+## [Users Microservice 1] - JPA2
+
+### `application.yml`에 이거 추가해야 테이블 자동 생성됨
+
+```yml
+  jpa:
+    hibernate:
+      ddl-auto: create
+```
+
+### `ResponseEntity` 반환 방법
+
+```java
+return new ResponseEntity(responseUser, HttpStatus.CREATED);
+```
+
