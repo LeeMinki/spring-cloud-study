@@ -203,3 +203,61 @@ dependencies {
 return new ResponseEntity(responseUser, HttpStatus.CREATED);
 ```
 
+---
+
+## [Users Microservice 1] - Spring Security 연동
+
+### Spring Security configure에서
+
+* `http.headers().frameOptions().disable()`을 추가하지 않으면 h2-console 접근 안 됨
+
+### Spring Security deprecated
+
+#### `WebSecurityConfigurerAdapter` deprecated
+
+* [공식 문서](https://spring.io/blog/2022/02/21/spring-security-without-the-websecurityconfigureradapter)
+* Spring Boot 2.7.x부터 deprecated
+* `SecurityFilterChain`을 Bean으로 등록해서 사용해야 함
+* `@EnableWebSecurity`은 그래도 붙여야 하는 듯
+
+#### `authorizeRequests`, `antMatchers` deprecated
+
+* [참고](https://stackoverflow.com/questions/74609057/how-to-fix-spring-authorizerequests-is-deprecated)
+* `authorizeRequests`, `antMatchers` -> `authorizeHttpRequests`, `requestMatchers`
+
+#### `requestMatchers`에 h2-console을 추가해도 안 됨
+
+* [이걸로 해결](https://stackoverflow.com/questions/74680244/h2-database-console-not-opening-with-spring-security)
+
+#### 결론은 이렇게 작성
+
+```java
+import static org.springframework.boot.autoconfigure.security.servlet.PathRequest.toH2Console;
+@Configuration
+@EnableWebSecurity
+public class WebSecurity {
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.csrf(csrf->csrf.disable());
+        http
+                .authorizeHttpRequests(authz -> authz
+                        .requestMatchers("/users/**").permitAll()
+                        .requestMatchers(toH2Console()).permitAll()
+                );
+        http.headers().frameOptions().disable();
+        return http.build();
+    }
+}
+```
+
+### Spring Security 적용 후 프로젝트 시작 시 로그에서 나오는 password
+
+#### `Using generated security password: 2d6f80a0-9169-4149-a047-ae0f05d51da9`
+
+* Spring Boot Project 내 인증에서 사용될 password임
+
+### BCryptPasswordEncoder
+
+* Bean으로 `UserServiceApplication`에 등록
+* salt로 같은 패스워드여도 다른 해시값이 나옴

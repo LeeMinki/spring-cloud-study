@@ -26,6 +26,11 @@ eureka:
     fetch-registry: true # Eureka 서버로부터 인스턴스들의 정보를 주기적으로 가져올 것인지를 설정
     service-url:
       defaultZone: http://127.0.0.1:8761/eureka # 서버가 가지고 있는 위치값
-
 greeting:
   message: Welcome to the Simple E-commerce.
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
