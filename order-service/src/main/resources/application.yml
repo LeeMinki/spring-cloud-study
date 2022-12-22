@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: catalog-service
+    name: order-service
   h2:
     console:
       enabled: true
@@ -12,15 +12,7 @@ spring:
       path: /h2-console
   jpa:
     hibernate:
-      ddl-auto: create-drop
-    show-sql: true
-    generate-ddl: true
-    database: h2
-    defer-datasource-initialization: true
-  sql:
-    init:
-      mode: always
-      schema-location: classpath:data.sql
+      ddl-auto: update
   datasource:
     driver-class-name: org.h2.Driver
     url: jdbc:h2:~/test;AUTO_SERVER=true
@@ -37,4 +29,4 @@ eureka:
 
 logging:
   level:
-    com.example.catalogservice: DEBUG
+    com.example.orderservice: DEBUG

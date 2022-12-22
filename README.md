@@ -311,3 +311,19 @@ public class WebSecurity {
     username: sa
     password: abc
 ```
+
+---
+
+## [Catalogs and Orders Microservice] Orders Microservice - 기능 구현 2
+
+### 여러 프로세스에서 H2 DB를 띄우기 위한 설정
+
+#### `application.yml` -> `datasource.url` -> `AUTO_SERVER=true`
+
+```yml
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:~/test;AUTO_SERVER=true
+    username: sa
+    password: abc
+```
