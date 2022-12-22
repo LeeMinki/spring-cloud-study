@@ -327,3 +327,112 @@ public class WebSecurity {
     username: sa
     password: abc
 ```
+
+---
+
+## [Users Microservice 2] Users Microservice - AuthenticationFilter 추가
+
+### `hasIpAddress` deprecated 대안
+
+* [참고](https://stackoverflow.com/questions/72366267/matching-ip-address-with-authorizehttprequests)
+
+### `AuthenticationManager` 가져오는 방법
+
+* `WebSecurityConfigurerAdapter`가 없으니 난리났음
+* `AuthenticationManager`는 bean으로 등록하고 사용해야 함
+* `AuthenticationManager` 주입 방법에서 많이 해맴
+* [AuthenticationManager 주입 참고](https://stackoverflow.com/questions/72381114/spring-security-upgrading-the-deprecated-websecurityconfigureradapter-in-spring)
+* [결정타](https://stackoverflow.com/questions/73508743/implementing-new-customfilter-in-spring-security)
+
+### 최종 코드
+
+#### WebSecurity.java
+
+```java
+@Configuration
+@EnableWebSecurity
+public class WebSecurity {
+    private final String IP_ADDRESS = "218.147.172.23";
+
+    private AuthenticationConfiguration authenticationConfiguration;
+    private Environment env;
+    private UserService userService;
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @Autowired
+    public WebSecurity(AuthenticationConfiguration authenticationConfiguration,
+                       Environment env,
+                       UserService userService,
+                       BCryptPasswordEncoder bCryptPasswordEncoder) {
+        this.authenticationConfiguration = authenticationConfiguration;
+        this.env = env;
+        this.userService = userService;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager() throws Exception {
+        return this.authenticationConfiguration.getAuthenticationManager();
+    }
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        AuthenticationManager authenticationManager = authenticationManager();
+        http.csrf(csrf -> csrf.disable());
+        http
+                .authorizeHttpRequests(authz -> authz
+//                        .requestMatchers("/user-service/users/**", "/user-service/health_check/**", "/user-service/welcome/**").permitAll()
+                                .requestMatchers(toH2Console()).permitAll()
+                                .requestMatchers("/**")
+                                .access(hasIpAddress(IP_ADDRESS))
+                                .and()
+                                .addFilter(new AuthenticationFilter(authenticationManager))
+                );
+        http.headers().frameOptions().disable();
+        return http.build();
+    }
+
+    private static AuthorizationManager<RequestAuthorizationContext> hasIpAddress(String ipAddress) {
+        IpAddressMatcher ipAddressMatcher = new IpAddressMatcher(ipAddress);
+        return (authentication, context) -> {
+            HttpServletRequest request = context.getRequest();
+            return new AuthorizationDecision(ipAddressMatcher.matches(request));
+        };
+    }
+}
+```
+
+#### AuthenticationFilter.java
+
+```java
+public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
+
+    public AuthenticationFilter(AuthenticationManager authenticationManager) {
+        super.setAuthenticationManager(authenticationManager);
+    }
+
+    @Override
+    public Authentication attemptAuthentication(HttpServletRequest request,
+                                                HttpServletResponse response) throws AuthenticationException {
+        try {
+            RequestLogin creds = new ObjectMapper().readValue(request.getInputStream(), RequestLogin.class);
+
+            return getAuthenticationManager().authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                            creds.getEmail(),
+                            creds.getPassword(),
+                            new ArrayList<>()));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    protected void successfulAuthentication(HttpServletRequest request,
+                                            HttpServletResponse response,
+                                            FilterChain chain,
+                                            Authentication authResult) throws IOException, ServletException {
+//        super.successfulAuthentication(request, response, chain, authResult);
+    }
+}
+```
