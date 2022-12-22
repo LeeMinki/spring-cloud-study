@@ -261,3 +261,22 @@ public class WebSecurity {
 
 * Bean으로 `UserServiceApplication`에 등록
 * salt로 같은 패스워드여도 다른 해시값이 나옴
+
+---
+
+## [Catalogs and Orders Microservice] - Users Microservice와 Spring Cloud Gateway 연동
+
+### API Gateway URI와 서비스 URI가 달라서 생기는 문제
+
+<img width="874" alt="image" src="https://user-images.githubusercontent.com/28076542/209029990-1175f4c0-e677-44f5-b36e-7dbf171ba09b.png">
+
+* 서비스에서 `/user-service/health_check`이 없어서 NOT FOUND가 뜸
+
+### 해결 방법
+
+```java
+    @GetMapping("/user-service/health_check")
+    public String status() {
+        return String.format("It's Working in User Service on PORT %s", env.getProperty("local.server.port"));
+    }
+```
