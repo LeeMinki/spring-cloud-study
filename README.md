@@ -108,13 +108,13 @@ public class FirstServiceController {
 
 ---
 
-## [E-commerce 애플리케이션] - E-commerce 애플리케이션 개요
+## [E-commerce 애플리케이션] E-commerce 애플리케이션 개요
 
 <img width="1177" alt="image" src="https://user-images.githubusercontent.com/28076542/208722585-4d302a15-5e33-42b8-9adf-3664b74e2287.png">
 
 ---
 
-## [E-commerce 애플리케이션] - E-commerce 애플리케이션 구성
+## [E-commerce 애플리케이션] E-commerce 애플리케이션 구성
 
 ### 강의 애플리케이션 구성
 
@@ -134,13 +134,13 @@ public class FirstServiceController {
 
 ---
 
-## [Users Microservice 1] - welcome() 메소드
+## [Users Microservice 1] welcome() 메소드
 
 * discoveryservice(Eureka)는 Intellij가 아닌 `./gradlew clean bootRun`으로 실행\
 
 ---
 
-## [Users Microservice 1] - H2 데이터베이스 연동
+## [Users Microservice 1] H2 데이터베이스 연동
 
 ### build.gradle
 
@@ -166,7 +166,7 @@ dependencies {
 
 ---
 
-## [Users Microservice 1] - 사용자 추가
+## [Users Microservice 1] 사용자 추가
 
 <img width="509" alt="image" src="https://user-images.githubusercontent.com/28076542/208741086-ada00bba-b7f7-4786-8f33-fca1dca3e718.png">
 
@@ -174,7 +174,7 @@ dependencies {
 
 ---
 
-## [Users Microservice 1] - JPA1
+## [Users Microservice 1] JPA1
 
 ### spring boot 2.3 버전 이상부턴 validator 추가해야 함
 
@@ -187,7 +187,7 @@ dependencies {
 
 ---
 
-## [Users Microservice 1] - JPA2
+## [Users Microservice 1] JPA2
 
 ### `application.yml`에 이거 추가해야 테이블 자동 생성됨
 
@@ -205,7 +205,7 @@ return new ResponseEntity(responseUser, HttpStatus.CREATED);
 
 ---
 
-## [Users Microservice 1] - Spring Security 연동
+## [Users Microservice 1] Spring Security 연동
 
 ### Spring Security configure에서
 
@@ -264,7 +264,7 @@ public class WebSecurity {
 
 ---
 
-## [Catalogs and Orders Microservice] - Users Microservice와 Spring Cloud Gateway 연동
+## [Catalogs and Orders Microservice] Users Microservice와 Spring Cloud Gateway 연동
 
 ### API Gateway URI와 서비스 URI가 달라서 생기는 문제
 
@@ -279,4 +279,35 @@ public class WebSecurity {
     public String status() {
         return String.format("It's Working in User Service on PORT %s", env.getProperty("local.server.port"));
     }
+```
+
+---
+
+## [Catalogs and Orders Microservice] Catalogs Microservice - 기능구현 2
+
+### 실행 시 `data.sql` 실행시키기 위한 `application.yml` 설정
+
+```yml
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+      path: /h2-console
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    generate-ddl: true
+    database: h2
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
+      schema-location: classpath:data.sql
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:~/test
+    username: sa
+    password: abc
 ```
