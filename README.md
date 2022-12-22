@@ -436,3 +436,9 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     }
 }
 ```
+
+---
+
+## [Users Microservice 2] Users Microservice - 로그인 처리 과정
+
+![image](https://user-images.githubusercontent.com/28076542/209203316-64b805c8-6e5b-4338-be68-f7076dba8246.png)
