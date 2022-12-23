@@ -8,4 +8,7 @@ spring:
     config:
       server:
         git:
-          uri: file:///C:\Users\kai01\Desktop\config
+#          uri: file:///C:\Users\kai01\Desktop\cloud-config
+          uri: https://github.com/LeeMinki/cloud-config
+#          username: [your username]
+#          password: [your password]

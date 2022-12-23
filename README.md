@@ -506,8 +506,8 @@ gateway:
 
 ```
 
-* 현재 디렉토리의 바깥에 있는 config 디렉토리에 `ecommerce.yml` 생성
-* config 디렉토리에서 `git init`
+* 현재 디렉토리의 바깥에 있는 cloud-config 디렉토리에 `ecommerce.yml` 생성
+* cloud-config 디렉토리에서 `git init`
 
 ### Windows에서 git uri 설정
 
@@ -519,7 +519,7 @@ spring:
     config:
       server:
         git:
-          uri: file:///C:\Users\kai01\Desktop\config
+          uri: file:///C:\Users\kai01\Desktop\cloud-config
 
 ```
 
