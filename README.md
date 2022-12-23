@@ -4,7 +4,7 @@
 
 ### 서비스 실행 시 포트 바꾸는 방법
 
-#### `application.yml` 변경
+### 1. `application.yml` 변경
 
 ```yml
 server:

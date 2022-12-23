@@ -48,6 +48,7 @@ spring:
           filters:
             - RemoveRequestHeader=Cookie # POST로 전달되는 데이터를 매번 새롭게 인식하기 위해
             - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+            - AuthorizationHeaderFilter
         - id: catalog-service
           uri: lb://CATALOG-SERVICE
           predicates: # 조건절
@@ -77,3 +78,6 @@ spring:
                 baseMessage: Hi, there.
                 preLogger: true
                 postLogger: true
+
+token:
+  secret: user_token
