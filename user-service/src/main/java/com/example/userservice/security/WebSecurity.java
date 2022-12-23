@@ -56,7 +56,7 @@ public class WebSecurity {
                                 .requestMatchers("/**")
                                 .access(hasIpAddress(IP_ADDRESS))
                                 .and()
-                                .addFilter(new AuthenticationFilter(authenticationManager))
+                                .addFilter(new AuthenticationFilter(authenticationManager, userService, env))
                 );
         http.headers().frameOptions().disable();
         return http.build();
