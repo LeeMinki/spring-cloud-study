@@ -549,3 +549,21 @@ spring:
 #### 3. Spring cloud bus 사용
 
 * Actuator보다 더 효율적임
+
+---
+
+## [Configuration Service] Spring Cloud Gateway에서 Spring Cloud Config 연동 2
+
+### `HttpTrace` -> `HttpExchanges`로 이름 변경
+
+* [issue 참고](https://github.com/spring-projects/spring-boot/issues/32885)
+
+
+### `ApigatewayServiceApplication`에서 `@Bean` 등록
+
+```java
+	@Bean
+	public HttpExchangeRepository httpExchangeRepository() {
+		return new InMemoryHttpExchangeRepository();
+	}
+```

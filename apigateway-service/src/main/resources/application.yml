@@ -11,6 +11,9 @@ eureka:
 spring:
   application:
     name: apigateway-service
+  config:
+    import:
+      - classpath:/bootstrap.yml
   cloud:
     gateway:
       default-filters:
@@ -49,6 +52,14 @@ spring:
             - RemoveRequestHeader=Cookie # POST로 전달되는 데이터를 매번 새롭게 인식하기 위해
             - RewritePath=/user-service/(?<segment>.*), /$\{segment}
             - AuthorizationHeaderFilter
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates: # 조건절
+            - Path=/user-service/actuator/**
+            - Method=GET,POST
+          filters:
+            - RemoveRequestHeader=Cookie # POST로 전달되는 데이터를 매번 새롭게 인식하기 위해
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
         - id: catalog-service
           uri: lb://CATALOG-SERVICE
           predicates: # 조건절
@@ -81,3 +92,9 @@ spring:
 
 token:
   secret: user_token
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans, httpexchanges
