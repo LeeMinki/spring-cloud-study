@@ -568,3 +568,17 @@ spring:
 		return new InMemoryHttpExchangeRepository();
 	}
 ```
+
+---
+
+## [Spring Cloud Bus] Spring Cloud Bus 개요
+
+<img width="798" alt="image" src="https://user-images.githubusercontent.com/28076542/209323792-8555071e-b57e-4128-981c-43d123287986.png">
+
+<img width="870" alt="image" src="https://user-images.githubusercontent.com/28076542/209396001-68447641-ef72-41de-8dc1-1dfcebdfb910.png">
+
+### busrefresh
+
+<img width="803" alt="image" src="https://user-images.githubusercontent.com/28076542/209396354-b3a12207-bfe1-4aa8-ae85-12c6c61afa4c.png">
+
+* busrefresh를 어느 서비스에 호출하더라도, Spring Cloud Bus에 연결된 모든 서비스에 호출됨
