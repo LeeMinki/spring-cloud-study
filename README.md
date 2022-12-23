@@ -471,3 +471,10 @@ dependencies {
 	implementation 'javax.xml.bind:jaxb-api:2.3.1'
 }
 ```
+
+---
+
+## [Configuration Service] Spring Cloud Config
+
+<img width="520" alt="image" src="https://user-images.githubusercontent.com/28076542/209279101-67c62f2b-5454-49bd-8a0e-7707746f2a97.png">
+
