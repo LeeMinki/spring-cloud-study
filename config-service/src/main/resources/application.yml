@@ -4,9 +4,13 @@ server:
 spring:
   application:
     name: config-service
+  profiles:
+    active: native
   cloud:
     config:
       server:
+        native:
+          search-locations: file:///C:\Users\kai01\Desktop\spring-cloud study\native-file-repo
         git:
 #          uri: file:///C:\Users\kai01\Desktop\cloud-config
           uri: https://github.com/LeeMinki/cloud-config

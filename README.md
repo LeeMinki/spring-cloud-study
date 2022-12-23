@@ -541,6 +541,7 @@ spring:
 
 * Application 상태 모니터링
 * Metric 수집을 위한 Http End point 제공
+* Application마다 Refresh를 각각 실행시켜야 함
 
 ##### configuration 변경 후 아래와 같이 POST로 refersh 전송하면, 변경내용 나옴
 
