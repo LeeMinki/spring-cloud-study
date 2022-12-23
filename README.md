@@ -601,3 +601,26 @@ INFO 38044 --- [           main] o.s.a.r.c.CachingConnectionFactory       : Atte
 INFO 38044 --- [           main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#4f7bb8df:0/SimpleConnection@719bb60d [delegate=amqp://guest@127.0.0.1:5672/, localPort=9345]
 INFO 38044 --- [           main] o.s.c.stream.binder.BinderErrorChannel   : Channel 'rabbit-283438643.springCloudBusInput.errors' has 1 subscriber(s).
 ```
+
+---
+
+## [Spring Cloud Bus] Spring Cloud Bus 테스트
+
+### 설정 정보 업데이트
+
+<img width="645" alt="image" src="https://user-images.githubusercontent.com/28076542/209402055-84920a47-a5b8-4a74-8bd9-f319fce6b7ec.png">
+
+
+### 전송 후 로그
+
+#### user-service
+
+```bash
+INFO 3300 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_USER-SERVICE/user-service:a8eba4416a7f58528aa41e606be7b2aa - registration status: 204
+```
+
+#### apigateway-service는 Exception
+
+`Reason: java.lang.NoSuchMethodException: java.security.Provider.<init>()`
+
+* [버전 이슈인듯](https://github.com/spring-cloud/spring-cloud-gateway/issues/2816)
