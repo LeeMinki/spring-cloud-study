@@ -442,3 +442,32 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 ## [Users Microservice 2] Users Microservice - 로그인 처리 과정
 
 ![image](https://user-images.githubusercontent.com/28076542/209203316-64b805c8-6e5b-4338-be68-f7076dba8246.png)
+
+---
+
+## [Users Microservice 2] Users Microservice - JWT 생성
+
+### 아래 코드에서 Exception  발생
+
+`java.lang.ClassNotFoundException: javax.xml.bind.DatatypeConverter`
+
+```java
+String token = Jwts.builder()
+        .setSubject(userDetails.getUserId())
+        .setExpiration(new Date(System.currentTimeMillis() +
+                Long.parseLong(env.getProperty("token.expiration_time"))))
+        .signWith(SignatureAlgorithm.HS512, env.getProperty("token.secret"))
+        .compact();
+```
+
+#### `jjwt` 외에 `jaxb-api` dependency도 추가해야 함
+
+```gradle
+dependencies {
+  ...
+	// https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt
+	implementation 'io.jsonwebtoken:jjwt:0.9.1'
+	// https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api
+	implementation 'javax.xml.bind:jaxb-api:2.3.1'
+}
+```
