@@ -489,3 +489,20 @@ dependencies {
 * 외부의 설정 파일이 우선순위가 더 높음
 * `application-name-{profile}.yml`과 같이 구체적인 파일명이 우선순위가 더 높음
 * profile을 명시하지 않으면 `default`
+
+---
+
+## [Configuration Service] Spring Cloud Config - 프로젝트 생성
+
+### Windows에서 git uri 설정
+
+```yml
+spring:
+  application:
+    name: config-service
+  cloud:
+    config:
+      server:
+        git:
+          uri: file:///C:\Users\kai01\Desktop\spring-cloud study
+```
