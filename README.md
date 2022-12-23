@@ -494,6 +494,21 @@ dependencies {
 
 ## [Configuration Service] Spring Cloud Config - 프로젝트 생성
 
+### `ecommerce.yml`
+
+```yml
+token:
+  expiration_time: 86400000 # 하루
+  secret: user_token_test
+
+gateway:
+  ip: 218.147.172.23
+
+```
+
+* 현재 디렉토리의 바깥에 있는 config 디렉토리에 `ecommerce.yml` 생성
+* config 디렉토리에서 `git init`
+
 ### Windows에서 git uri 설정
 
 ```yml
@@ -504,5 +519,33 @@ spring:
     config:
       server:
         git:
-          uri: file:///C:\Users\kai01\Desktop\spring-cloud study
+          uri: file:///C:\Users\kai01\Desktop\config
+
 ```
+
+---
+
+## [Configuration Service] Users Microservice에서 Spring Cloud Config 연동 2
+
+### Configuration value 변경 반영 방법
+
+#### 1. 서버 재기동
+
+* 좋은 방법이 아님
+
+#### 2. Actuator refresh
+
+* Actuator refresh로 새로운 정보를 가져올 수 있음
+
+##### Spring Boot Actuator
+
+* Application 상태 모니터링
+* Metric 수집을 위한 Http End point 제공
+
+##### configuration 변경 후 아래와 같이 POST로 refersh 전송하면, 변경내용 나옴
+
+<img width="636" alt="image" src="https://user-images.githubusercontent.com/28076542/209300441-e2988d3d-8f6a-427c-b070-bb3c8ac4471c.png">
+
+#### 3. Spring cloud bus 사용
+
+* Actuator보다 더 효율적임

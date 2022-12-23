@@ -53,6 +53,7 @@ public class WebSecurity {
                 .authorizeHttpRequests(authz -> authz
 //                        .requestMatchers("/user-service/users/**", "/user-service/health_check/**", "/user-service/welcome/**").permitAll()
                                 .requestMatchers(toH2Console()).permitAll()
+                                .requestMatchers("/actuator/**").permitAll()
                                 .requestMatchers("/**")
                                 .access(hasIpAddress(IP_ADDRESS))
                                 .and()

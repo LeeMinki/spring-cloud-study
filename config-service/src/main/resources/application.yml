@@ -8,4 +8,4 @@ spring:
     config:
       server:
         git:
-          uri: file:///C:\Users\kai01\Desktop\spring-cloud study
+          uri: file:///C:\Users\kai01\Desktop\config
