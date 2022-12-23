@@ -136,7 +136,7 @@ public class FirstServiceController {
 
 ## [Users Microservice 1] welcome() 메소드
 
-* discoveryservice(Eureka)는 Intellij가 아닌 `./gradlew clean bootRun`으로 실행\
+* discoveryservice(Eureka)는 Intellij가 아닌 `./gradlew clean bootRun`으로 실행
 
 ---
 
@@ -582,3 +582,22 @@ spring:
 <img width="803" alt="image" src="https://user-images.githubusercontent.com/28076542/209396354-b3a12207-bfe1-4aa8-ae85-12c6c61afa4c.png">
 
 * busrefresh를 어느 서비스에 호출하더라도, Spring Cloud Bus에 연결된 모든 서비스에 호출됨
+
+---
+
+## [Spring Cloud Bus] AMQP 사용
+
+* Advanced Message Queing Protocol
+
+### Configuration의 rabbitmq
+
+* configuration에 변경 요청이 오면 rabbitmq에 변경사항을 통보
+* rabbitmq에 등록된 다른 microservice에 push
+
+### rabbitmq 접속 로그
+
+```bash
+INFO 38044 --- [           main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [127.0.0.1:5672]
+INFO 38044 --- [           main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#4f7bb8df:0/SimpleConnection@719bb60d [delegate=amqp://guest@127.0.0.1:5672/, localPort=9345]
+INFO 38044 --- [           main] o.s.c.stream.binder.BinderErrorChannel   : Channel 'rabbit-283438643.springCloudBusInput.errors' has 1 subscriber(s).
+```
