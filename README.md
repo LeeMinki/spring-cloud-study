@@ -478,3 +478,14 @@ dependencies {
 
 <img width="520" alt="image" src="https://user-images.githubusercontent.com/28076542/209279101-67c62f2b-5454-49bd-8a0e-7707746f2a97.png">
 
+---
+
+## [Configuration Service] Local Git Repository
+
+### 우선순위
+
+<img width="839" alt="image" src="https://user-images.githubusercontent.com/28076542/209281756-ff577fe2-7a3d-4755-b541-a5b38d3310f2.png">
+
+* 외부의 설정 파일이 우선순위가 더 높음
+* `application-name-{profile}.yml`과 같이 구체적인 파일명이 우선순위가 더 높음
+* profile을 명시하지 않으면 `default`
