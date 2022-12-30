@@ -648,3 +648,38 @@ INFO 3300 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : Disco
 ```
 
 * `jdbc:h2:~/test;AUTO_SERVER=true` -> `jdbc:h2:tcp://localhost/~/test;AUTO_SERVER=true`
+
+---
+
+## [설정 정보의 암호화 처리] 비대칭키를 이용한 암호화 2
+
+### `keystore` 디렉토리 파일 설명
+
+#### `apiEncryptionKey.jks`
+
+```bash
+keytool -genkeypair -alias apiEncryptionKey -keyalg RSA -dname "CN=minki lee, OU=API Development, O=test.co.kr, L=Suwon, C=KR" -keypass "test1234" -keystore apiEncryptionKey.jks -storepass "test1234"
+```
+
+* Private key
+* Spring Config Server에서 얘만 쓰임
+
+#### `trustServer.cer`
+
+```bash
+keytool -export -alias apiEncryptionKey -keystore .\apiEncryptionKey.jks -rfc -file trustServer.cer
+```
+
+* 인증서
+
+#### `publicKey.jks`
+
+```bash
+keytool -import -alias trustServer -file trustServer.cer -keystore publicKey.jks
+```
+
+* Public key
+
+### keytool -list 커맨드 예시
+
+`keytool -list -keystore .\apiEncryptionKey.jks`

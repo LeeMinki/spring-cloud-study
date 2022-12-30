@@ -1,6 +1,6 @@
 token:
   expiration_time: 86400000 # 하루
-  secret: my_token_native_ecommerce
+  secret: "{cipher}AQBkQsOTWRMJTvtEC4h7fTAxepl+K0zkcWhbDzR43Tnbou1n5KH+13PxPKp8j4nTnPHL/Sx98HAY/4vLiXhJzltVELQwalaHnwhhTVYDzYg2rAMDrjENbc+dL937WjpjUBkUsEZp7y2OhNMqNR0ht6oc6nKiK8M14eZjZwodoi2QES6p4ZHROF6+G0nIuzNHQwZHTq8VkIOBgZ7UrQNje/2mOSV0LctG4Iguy3JPiUM6E+NykddI/Xk53HJrPMDEwhIxXY5f/9yFhz+r9BA/2WUsUFuo4cm1fkLKLIS2tcfz2CzvCld7B1FQ/v2dkAWCPWBUf6luiCpxwqK/dIEbmkfQMDpl+Sqc3sWer3jtKqSb8loTqo016cLPOy7iX2BqMetIf4+DjWcTWO8DFqX3XTe4" # POST 127.0.0.1:8888/encrypt로 my_token_native_ecommerce를 보냈을 때 나온 결과 - Asymmetric
 
 gateway:
   ip: 218.147.172.23
