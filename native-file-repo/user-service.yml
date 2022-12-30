@@ -1,3 +1,9 @@
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:tcp://localhost/~/test;AUTO_SERVER=true
+    username: sa
+    password: "{cipher}208beb1b3ac4c50dc8e157301eee22ff154c3f5af01e3761056374adc1213f8c" # POST 127.0.0.1:8888/encrypt로 abc를 보냈을 때 나온 결과
 token:
   expiration_time: 86400000 # 하루
   secret: my_token_native_user_service

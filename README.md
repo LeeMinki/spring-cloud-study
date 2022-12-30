@@ -630,3 +630,21 @@ INFO 3300 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : Disco
 ## [설정 정보의 암호화 처리] 대칭키와 비대칭키
 
 <img width="745" alt="image" src="https://user-images.githubusercontent.com/28076542/210038413-39262eba-fa76-437d-9d9a-f628ae1b9296.png">
+
+---
+
+## [설정 정보의 암호화 처리] 대칭키를 이용한 암호화 2
+
+### 여러 서비스에서 h2-console에 접속하기 위해 jdbc url 변경
+
+<img width="452" alt="image" src="https://user-images.githubusercontent.com/28076542/210041264-7bf17ae0-2810-4f24-9b50-c3b6a792ac72.png">
+
+```yml
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:tcp://localhost/~/test;AUTO_SERVER=true
+    username: sa
+    password: abc
+```
+
+* `jdbc:h2:~/test;AUTO_SERVER=true` -> `jdbc:h2:tcp://localhost/~/test;AUTO_SERVER=true`

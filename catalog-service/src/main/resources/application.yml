@@ -23,7 +23,7 @@ spring:
       schema-location: classpath:data.sql
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:~/test;AUTO_SERVER=true
+    url: jdbc:h2:tcp://localhost/~/test;AUTO_SERVER=true
     username: sa
     password: abc
 eureka:
@@ -31,9 +31,9 @@ eureka:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.valume}}
   client:
     register-with-eureka: true
-    fetch-registry: true # Eureka ????? ?????? ??? ????? ??? ???? ??
+    fetch-registry: true # Eureka 서버로부터 인스턴스들의 정보를 주기적으로 가져올 것인지를 설정
     service-url:
-      defaultZone: http://127.0.0.1:8761/eureka # ??? ??? ?? ???
+      defaultZone: http://127.0.0.1:8761/eureka # 서버가 가지고 있는 위치값
 
 logging:
   level:

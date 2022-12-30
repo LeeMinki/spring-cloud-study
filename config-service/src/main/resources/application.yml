@@ -9,6 +9,9 @@ spring:
     port: 5672
     username: guest
     password: guest
+  config:
+    import:
+      - classpath:/bootstrap.yml
   profiles:
     active: native
   cloud:
