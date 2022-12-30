@@ -624,3 +624,9 @@ INFO 3300 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : Disco
 `Reason: java.lang.NoSuchMethodException: java.security.Provider.<init>()`
 
 * [버전 이슈인듯](https://github.com/spring-cloud/spring-cloud-gateway/issues/2816)
+
+---
+
+## [설정 정보의 암호화 처리] 대칭키와 비대칭키
+
+<img width="745" alt="image" src="https://user-images.githubusercontent.com/28076542/210038413-39262eba-fa76-437d-9d9a-f628ae1b9296.png">
