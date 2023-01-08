@@ -720,3 +720,11 @@ userDto.setOrders(orderList);
 
 return userDto;
 ```
+
+---
+
+## [Microservice간 통신] ErrorDecoder를 이용한 예외 처리
+
+### `FeignErrorDecoder` 사용
+
+* 기존 500 Server Internal Error에서 404 Not Found로 Exception 내용을 변경 가능
