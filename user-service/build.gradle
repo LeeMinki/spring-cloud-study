@@ -51,6 +51,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator:3.0.0'
 	// https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-bus-amqp
 	implementation 'org.springframework.cloud:spring-cloud-starter-bus-amqp:4.0.0'
+	// https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-openfeign
+	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign:4.0.0'
 }
 
 dependencyManagement {
