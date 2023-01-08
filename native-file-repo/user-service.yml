@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:tcp://localhost/~/test;AUTO_SERVER=true
+    url: jdbc:h2:mem:testdb
     username: sa
     password: "{cipher}AQCiaF4n1N2MOZdGkbtZobgtvqW3zZOXOBvX1HLl143v8DitypfrLM3ttKZykbunvOFtOtBK2ozx1xavsy5XAjmRZuuiCkbl7e9TAOhp6wys1rLgnW3JKRXNBbKz557p23l1xEfZkQSdFCbMnAZ1XaxZYMFCMlbSFDX3nTHAV9EBORy+SpBj8BxTIlW2gELDu601toMjcPcaDbWEtHI3fG1klqi5tG24UR9SWrEXO7eEmMyaUxt/YXg4rn4H9qIRYFk9sYC4+XsWKefkySs3ryTwwyehUJsXHSwwmX2gCNd8NMV+qvKpXPmyAQ3tJEYEdoOHdwL+Q5HdhdbOeJhhljeyUdJH15xe/J3T6SjM1dfwYTDXUeN/9PtT9PmxVWDNSUI=" # POST 127.0.0.1:8888/encrypt로 abc를 보냈을 때 나온 결과 - Asymmetric
 token:

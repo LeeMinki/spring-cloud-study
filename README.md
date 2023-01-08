@@ -728,3 +728,36 @@ return userDto;
 ### `FeignErrorDecoder` 사용
 
 * 기존 500 Server Internal Error에서 404 Not Found로 Exception 내용을 변경 가능
+
+---
+
+## [Microservice간 통신] 데이터 동기화 문제 2
+
+### testdb url 바꿈
+
+```yml
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: abc
+```
+
+* 이렇게 하면 각 서비스마다 하나의 데이터베이스를 가짐
+* `OrderService` intellij 터미널에 `./gradlew clean bootRun`로 `OrderService` 2개 실행
+* 실습대로 서로 다른 `OrderService`의 db에 나눠서 저장되는거 확인 가능
+* 데이터 동기화 문제 발생
+
+### 데이터 동기화 해결 방법
+
+#### 하나의 데이터베이스 사용
+
+<img width="817" alt="image" src="https://user-images.githubusercontent.com/28076542/211188972-8b884d8e-73d3-4ed5-97c5-3c34ef8cd204.png">
+
+#### 각각의 데이터베이스에 저장된 내용을 Message Queuing Server로 동기화
+
+<img width="850" alt="image" src="https://user-images.githubusercontent.com/28076542/211188990-cb24cee0-5845-4cc4-9ea5-9c865e8fb6f3.png">
+
+#### 서비스는 Message Queueing Server에 데이터를 넘기고, 나중에 한 번에 데이터베이스에 저장
+
+<img width="850" alt="image" src="https://user-images.githubusercontent.com/28076542/211189047-bc2d87e6-aa50-4a71-805a-6c66913b9011.png">

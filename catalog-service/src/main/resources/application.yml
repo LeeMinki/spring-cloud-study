@@ -12,7 +12,7 @@ spring:
       path: /h2-console
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
     show-sql: true
     generate-ddl: true
     database: h2
@@ -23,7 +23,7 @@ spring:
       schema-location: classpath:data.sql
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:tcp://localhost/~/test;AUTO_SERVER=true
+    url: jdbc:h2:mem:testdb
     username: sa
     password: abc
 eureka:
