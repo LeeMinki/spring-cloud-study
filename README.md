@@ -683,3 +683,22 @@ keytool -import -alias trustServer -file trustServer.cer -keystore publicKey.jks
 ### keytool -list 커맨드 예시
 
 `keytool -list -keystore .\apiEncryptionKey.jks`
+
+---
+
+## [Microservice간 통신] RestTemplate 사용 2
+
+### user-service bootstrap.yml 설정 잘해라
+
+```yml
+spring:
+  cloud:
+    config:
+      uri: http://127.0.0.1:8888
+      name: user-service
+#  profiles:
+#    active: dev
+```
+
+* `config-server`로 되어있어서 `order_service.url`을 자꾸 못읽어왔음
+* 이것때문에 날린 시간이 얼마인지

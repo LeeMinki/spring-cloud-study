@@ -10,3 +10,6 @@ token:
 
 gateway:
   ip: 218.147.172.23
+
+order_service:
+  url: http://order-service/order-service/%s/orders
