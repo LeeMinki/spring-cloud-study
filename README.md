@@ -702,3 +702,21 @@ spring:
 
 * `config-server`로 되어있어서 `order_service.url`을 자꾸 못읽어왔음
 * 이것때문에 날린 시간이 얼마인지
+
+---
+
+## [Microservice간 통신] FeignClient 예외 처리 2
+
+### `try-catch`로 마이크로 서비스간 호출 에러를 잡을 수 있음
+
+```java
+List<ResponseOrder> orderList = null;
+try {
+    orderList = orderServiceClient.getOrders(userId);
+} catch (FeignException ex) {
+    log.error(ex.getMessage());
+}
+userDto.setOrders(orderList);
+
+return userDto;
+```

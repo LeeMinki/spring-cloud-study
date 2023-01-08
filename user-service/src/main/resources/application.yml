@@ -39,7 +39,10 @@ greeting:
 
 logging:
   level:
-    com.example.userservice: DEBUG
+    com:
+      example:
+        userservice:
+          client: DEBUG
     org:
       springframework:
         security: DEBUG
